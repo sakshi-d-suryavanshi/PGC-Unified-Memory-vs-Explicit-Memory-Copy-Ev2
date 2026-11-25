@@ -267,6 +267,18 @@ All six tests completed successfully.
 
 The output of every vector addition was verified successfully.
 
+## Experimental Screenshots
+
+![Screenshot 1](https://github.com/sakshi-d-suryavanshi/PGC-Unified-Memory-vs-Explicit-Memory-Copy-Ev2/blob/main/Screenshots/pgc_eve_1.jpeg?raw=true)
+
+![Screenshot 2](https://github.com/sakshi-d-suryavanshi/PGC-Unified-Memory-vs-Explicit-Memory-Copy-Ev2/blob/main/Screenshots/pgc_eve_2.jpeg?raw=true)
+
+![Screenshot 3](https://github.com/sakshi-d-suryavanshi/PGC-Unified-Memory-vs-Explicit-Memory-Copy-Ev2/blob/main/Screenshots/pgc_eve_3.jpeg?raw=true)
+
+![Screenshot 4](https://github.com/sakshi-d-suryavanshi/PGC-Unified-Memory-vs-Explicit-Memory-Copy-Ev2/blob/main/Screenshots/pgc_eve_4.jpeg?raw=true)
+
+![Screenshot 5](https://github.com/sakshi-d-suryavanshi/PGC-Unified-Memory-vs-Explicit-Memory-Copy-Ev2/blob/main/Screenshots/pgc_eve_5.jpeg?raw=true)
+
 ## 10. Performance Graph
 
 The experiment generates a graph comparing the recorded execution times of Explicit Memory Copy and Unified Memory.
