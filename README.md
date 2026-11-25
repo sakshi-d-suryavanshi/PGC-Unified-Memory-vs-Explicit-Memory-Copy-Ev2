@@ -285,12 +285,11 @@ The output of every vector addition was verified successfully.
 
 The experiment generates a graph comparing the recorded execution times of Explicit Memory Copy and Unified Memory.
 
-Graph location:
 
-`results/performance_comparison.png`
 
-![Performance Comparison](results/performance_comparison.png)
+![Performance Comparison Graph](https://github.com/sakshi-d-suryavanshi/PGC-Unified-Memory-vs-Explicit-Memory-Copy-Ev2/blob/main/Graph/pgc_eve2_graph.jpeg?raw=true)
 
+-----
 ### Graph Interpretation
 
 - Explicit Memory Copy total time includes Host-to-Device transfer, kernel execution, and Device-to-Host transfer.
