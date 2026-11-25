@@ -162,32 +162,7 @@ The experiment uses three different dataset sizes:
 
 Each element is a floating-point value.
 
-## 8. Project Structure
 
-```text
-Theme6_Unified_Memory/
-│
-├── unified_memory.cu
-├── unified_memory
-├── unified_memory_backup.cu
-│
-├── check_cpu_prefetch.cu
-├── check_gpu.cu
-├── check_prefetch.cu
-├── check_properties.cu
-│
-├── check_cpu_prefetch
-├── check_gpu
-├── check_prefetch
-├── check_properties
-│
-├── plot_results.py
-│
-├── results/
-│   ├── results.csv
-│   └── performance_comparison.png
-│
-└── screenshots/
 ```
 
 ### File Description
@@ -204,7 +179,7 @@ Theme6_Unified_Memory/
 | `check_prefetch.cu` | Tests GPU prefetch support |
 | `check_cpu_prefetch.cu` | Tests CPU prefetch support |
 
-## 9. Execution Steps
+## 8. Execution Steps
 
 ### Step 1: Open the project directory
 
@@ -260,11 +235,11 @@ The graph is saved as:
 
 `results/performance_comparison.png`
 
-## 10. Experimental Results
+## 09. Experimental Results
 
 The experiment was executed successfully on the NVIDIA RTX 4500 Ada Generation GPU.
 
-### 10.1 Explicit Memory Copy Results
+### 09.1 Explicit Memory Copy Results
 
 | Dataset Size | H2D (ms) | Kernel (ms) | D2H (ms) | Total (ms) |
 |---:|---:|---:|---:|---:|
@@ -272,7 +247,7 @@ The experiment was executed successfully on the NVIDIA RTX 4500 Ada Generation G
 | 16,000,000 | 11.78252 | 0.52746 | 4.61343 | 16.92340 |
 | 64,000,000 | 45.07582 | 2.11104 | 16.85957 | 64.04642 |
 
-### 10.2 Unified Memory Results
+### 09.2 Unified Memory Results
 
 | Dataset Size | Kernel Execution Time (ms) | Correctness |
 |---:|---:|---|
@@ -280,7 +255,7 @@ The experiment was executed successfully on the NVIDIA RTX 4500 Ada Generation G
 | 16,000,000 | 6.05136 | PASS |
 | 64,000,000 | 23.95923 | PASS |
 
-### 10.3 Correctness Verification
+### 09.3 Correctness Verification
 
 All six tests completed successfully.
 
@@ -292,7 +267,7 @@ All six tests completed successfully.
 
 The output of every vector addition was verified successfully.
 
-## 11. Performance Graph
+## 10. Performance Graph
 
 The experiment generates a graph comparing the recorded execution times of Explicit Memory Copy and Unified Memory.
 
@@ -317,7 +292,7 @@ Explicit Memory Copy reports total transfer and kernel time, while Unified Memor
 
 Therefore, the graph is a comparison of the recorded measurements, not a direct end-to-end performance comparison. It should not be used to claim that Unified Memory is faster overall.
 
-## 12. CUDA Unified Memory Capability Observation
+## 11. CUDA Unified Memory Capability Observation
 
 During the experiment, GPU properties were checked.
 
@@ -335,31 +310,9 @@ However, Concurrent Managed Access was reported as unsupported in this environme
 
 Explicit prefetch operations were also tested but returned `invalid device ordinal`, so prefetching was not included in the final implementation.
 
-## 13. Advantages
 
-### Explicit Memory Copy
 
-- Provides direct control over data transfers.
-- Allows the programmer to decide when data moves between CPU and GPU.
-- Makes transfer operations visible and measurable.
-
-### Unified Memory
-
-- Simplifies memory management.
-- Reduces the need for manual memory transfers.
-- Allows CPU and GPU code to access the same managed allocation.
-- Makes CUDA programming easier for applications with complex data structures.
-
-## 14. Limitations
-
-- Unified Memory migration can introduce overhead.
-- Explicit Memory Copy requires additional programming effort.
-- Performance depends on dataset size and memory access patterns.
-- Prefetching could not be evaluated because of the prefetch error in the current environment.
-- The current timing measurements do not provide an equivalent end-to-end comparison.
-- The experiment uses one GPU and does not evaluate multi-GPU execution.
-
-## 15. Conclusion
+## 12. Conclusion
 
 In this experiment, Explicit Memory Copy and CUDA Unified Memory were successfully implemented using vector addition.
 
@@ -373,80 +326,3 @@ The experiment demonstrates the basic working of both memory management approach
 
 A fair performance comparison would require measuring equivalent end-to-end execution times for both approaches, including data initialization, transfers or migration, synchronization, and output access.
 
-## 16. Viva Questions and Answers
-
-**1. What is CUDA?**
-
-CUDA is a parallel computing platform developed by NVIDIA that allows programmers to execute applications on NVIDIA GPUs.
-
-**2. What is Explicit Memory Copy?**
-
-It is a memory management approach in which the programmer manually transfers data between CPU and GPU memory using `cudaMemcpy()`.
-
-**3. What is Unified Memory?**
-
-Unified Memory is a CUDA feature that provides a shared managed memory allocation accessible by both CPU and GPU.
-
-**4. What is the purpose of `cudaMalloc()`?**
-
-It allocates memory on the GPU.
-
-**5. What is the purpose of `cudaMallocManaged()`?**
-
-It allocates managed memory that can be accessed by both CPU and GPU.
-
-**6. What is `cudaMemcpy()`?**
-
-It transfers data between host and device memory.
-
-**7. What is H2D transfer?**
-
-H2D means Host-to-Device transfer, which moves data from CPU memory to GPU memory.
-
-**8. What is D2H transfer?**
-
-D2H means Device-to-Host transfer, which moves data from GPU memory to CPU memory.
-
-**9. What is a CUDA kernel?**
-
-A CUDA kernel is a function executed in parallel by GPU threads.
-
-**10. Why is `cudaDeviceSynchronize()` used?**
-
-It waits until previously issued GPU operations have completed.
-
-**11. What is memory migration?**
-
-Memory migration is the movement of managed memory data between CPU and GPU memory as required.
-
-**12. What is the main advantage of Unified Memory?**
-
-It simplifies programming by reducing the need for manual memory transfers.
-
-**13. What is the difference between Managed Memory and Concurrent Managed Access?**
-
-Managed Memory allows CPU and GPU to access a managed allocation. Concurrent Managed Access is an additional capability that allows concurrent access under supported conditions.
-
-**14. Why was prefetching not used in the final implementation?**
-
-Prefetch operations returned `invalid device ordinal` in the current WSL environment. Therefore, the experiment was completed using automatic migration without explicit prefetching.
-
-**15. Which approach is faster?**
-
-The answer depends on the workload and measurement method. A fair comparison requires measuring the complete execution time of both approaches under equivalent conditions.
-
-## 17. References
-
-- [NVIDIA CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/)
-- [NVIDIA CUDA Runtime API](https://docs.nvidia.com/cuda/cuda-runtime-api/)
-- [NVIDIA CUDA Toolkit Documentation](https://docs.nvidia.com/cuda/)
-
----
-
-**Experiment Status:** Successfully Executed
-
-**GPU:** NVIDIA RTX 4500 Ada Generation
-
-**Correctness:** 6/6 Tests Passed
-
-**Output Files:** CSV results and performance comparison graph generated.
