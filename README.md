@@ -165,19 +165,6 @@ Each element is a floating-point value.
 
 ```
 
-### File Description
-
-| File | Purpose |
-|---|---|
-| `unified_memory.cu` | Main CUDA implementation |
-| `unified_memory` | Compiled executable |
-| `plot_results.py` | Generates the performance graph |
-| `results.csv` | Stores experimental results |
-| `performance_comparison.png` | Generated performance graph |
-| `check_gpu.cu` | GPU detection test |
-| `check_properties.cu` | Checks GPU memory capabilities |
-| `check_prefetch.cu` | Tests GPU prefetch support |
-| `check_cpu_prefetch.cu` | Tests CPU prefetch support |
 
 ## 8. Execution Steps
 
